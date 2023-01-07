@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+
 import javax.swing.JComponent;
 
 public class PacMan {
@@ -14,7 +16,32 @@ public class PacMan {
   }
 
   public ArrayList<Location> get_valid_moves() {
-    return null;
+    int x = this.myLoc.x;
+    int y = this.myLoc.y;
+
+    ArrayList<Location> newLocations = new ArrayList<Location>();
+    ArrayList<Location> result = new ArrayList<Location>();
+    newLocations.add(new Location(x - 1, y));
+    newLocations.add(new Location(x + 1, y));
+    newLocations.add(new Location(x, y - 1));
+    newLocations.add(new Location(x, y + 1));
+
+    for (Location i : newLocations){
+
+      HashSet<Map.Type> curr = this.myMap.getLoc(i);
+
+      if(!curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) && 
+      !curr.contains(Map.Type.PACMAN)) {
+
+        result.add(i);
+
+      }
+  
+    } 
+    
+    return result;
+
+
   }
 
   public boolean move() {
