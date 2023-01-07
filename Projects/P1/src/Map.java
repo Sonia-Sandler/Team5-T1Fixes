@@ -71,10 +71,12 @@ public class Map {
 
     HashSet<Type> set = this.field.get(loc);
 
+    //checks if set is empty (no walls, pacman, cookie, ghost)
     if(set == null) {
       return this.emptySet;
     }
 
+    //checks if location is wall.
     for (Map.Type curr : set ) {
       if (curr == Type.WALL) {
         return this.wallSet;
