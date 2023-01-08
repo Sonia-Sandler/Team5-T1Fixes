@@ -1,13 +1,13 @@
 Project 1: PacMan Team1
-
+-------------------------------
 Team members and functions
 -------------------------------
 whe1123 (William He)
 
 PacMan Class
-
+-------------------------------
 get_valid_moves() 
-
+-------------------------------
   -Type: () -> ArrayList<Location>
   -Description: This function returns all possible moves that 
   the pacman can take at its current position.
@@ -27,7 +27,9 @@ get_valid_moves()
   or in a position where the pacman has possible moves.
 
 Ghost Class
-
+------------------------------- 
+get_valid_moves()
+-------------------------------
   -Type: () -> ArrayList<Location>
   -Description: This function returns all possible moves that 
   the ghost can take at its current position.
@@ -47,8 +49,9 @@ Ghost Class
 
   
 Map Class
-  
+-------------------------------  
 getLoc(Location loc)
+-------------------------------
   -Type: (Location Loc) -> HashSet<Type>
   -Description: This function takes in a given location
    and returns what's currently on that location. 
