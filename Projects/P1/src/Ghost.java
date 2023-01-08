@@ -27,8 +27,7 @@ public class Ghost {
 
       HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-      if(curr != null && !curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) && 
-      !curr.contains(Map.Type.PACMAN)) {
+      if(curr != null && !curr.contains(Map.Type.WALL)) {
 
         result.add(i);
 
