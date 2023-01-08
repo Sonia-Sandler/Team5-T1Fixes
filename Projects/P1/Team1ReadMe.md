@@ -3,7 +3,7 @@ Project 1: PacMan Team1
 Team members and functions
 -------------------------------
 whe1123 (William He)
-
+-------------------------------
 PacMan Class
 -------------------------------
 get_valid_moves() 
