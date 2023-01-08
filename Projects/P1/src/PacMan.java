@@ -30,7 +30,7 @@ public class PacMan {
 
       HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-      if(!curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) && 
+      if(curr != null && !curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) && 
       !curr.contains(Map.Type.PACMAN)) {
 
         result.add(i);

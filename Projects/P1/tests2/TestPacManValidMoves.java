@@ -30,6 +30,10 @@ public class TestPacManValidMoves extends TestCase {
     PacMan pacman2 = frame2.addPacMan(new Location(3, 1));
     assertTrue(pacman2.get_valid_moves().equals(allowedMoves));
     System.out.println("Passed pacman not trapped.");
+
+    PacMan pacman3 = frame2.addPacMan(new Location(500, 500));
+    assertTrue(pacman3.get_valid_moves().isEmpty());
+    System.out.println("Passed pacman invalid location.");
   
   }
 }
