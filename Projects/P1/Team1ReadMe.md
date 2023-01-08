@@ -4,6 +4,11 @@ Team members and functions
 -------------------------------
 whe1123 (William He)
 -------------------------------
+  Worked on:
+  PacMan Class: get_valid_moves()
+  Ghost Class: get_valid_moves()
+  Map Class: getLoc(Location loc)
+  
 PacMan Class
 -------------------------------
 get_valid_moves() 
