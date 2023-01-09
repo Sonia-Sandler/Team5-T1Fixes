@@ -58,8 +58,32 @@ public class Map {
   }
 
   public HashSet<Type> getLoc(Location loc) {
+       
     // wallSet and emptySet will help you write this method
-    return null;
+  
+    int x = loc.x;
+    int y = loc.y;
+
+    //first check if location is out of bounds.
+    if(x >=24 || x < 0 || y >= 25 || y < 0){
+      return null;
+    }
+
+    HashSet<Type> set = this.field.get(loc);
+
+    //checks if set is empty (no walls, pacman, cookie, ghost)
+    if(set == null) {
+      return this.emptySet;
+    }
+
+    //checks if location is wall.
+    for (Map.Type curr : set ) {
+      if (curr == Type.WALL) {
+        return this.wallSet;
+      }
+    }
+    
+    return set;
   }
 
   public boolean attack(String Name) {
