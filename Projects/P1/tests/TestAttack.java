@@ -7,19 +7,19 @@ public class TestAttack extends TestCase {
   public void testAttack() throws FileNotFoundException {
     NoFrame frame = new NoFrame();
 
-    Ghost ghost = frame.addGhost(new Location(1, 1), "casper", Color.red);
-    PacMan pacman = frame.addPacMan(new Location(2, 1));
+    Ghost ghost = frame.addGhost(new Location(2, 2), "casper", Color.red);
+    PacMan pacman = frame.addPacMan(new Location(3, 2));
     boolean check = true;
 
     assertTrue(ghost.attack());
-    System.out.println("Passed ghost right attack");
+    System.out.println("Passed ghost attack one");
 
     NoFrame frame2 = new NoFrame();
 
-    Ghost ghost2 = frame2.addGhost(new Location(3, 1), "casper", Color.red);
-    PacMan pacman2 = frame2.addPacMan(new Location(2, 1));
+    Ghost ghost2 = frame2.addGhost(new Location(3, 2), "casper", Color.red);
+    PacMan pacman2 = frame2.addPacMan(new Location(2, 2));
 
     assertTrue(ghost2.attack());
-    System.out.println("Passed ghost left attack");
+    System.out.println("Passed ghost attack two");
   }
 }
