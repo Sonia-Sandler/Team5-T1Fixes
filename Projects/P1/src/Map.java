@@ -76,7 +76,7 @@ public class Map {
       //Checks if cookie is there in map
       if(field.get(locations.get(name)).contains(Map.Type.COOKIE) == true){
         //decrement cookie count
-        cookies = cookies - 1;
+        cookies = cookies + 1;
         //Following removes the cookie throughout
         components.remove(name);
         locations.remove(name);
