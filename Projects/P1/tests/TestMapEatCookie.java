@@ -6,8 +6,8 @@ public class TestMapEatCookie extends TestCase {
 
   public void testMapEatCookie() throws FileNotFoundException {
     NoFrame frame = new NoFrame();
-    Ghost ghost = frame.addGhost(new Location(1, 1), "casper", Color.red);
-    PacMan pacman = frame.addPacMan(new Location(2, 1));
+    Ghost ghost = frame.addGhost(new Location(3, 2), "casper", Color.red);
+    PacMan pacman = frame.addPacMan(new Location(2, 2));
 
     assertNotNull(frame.getMap().eatCookie("tok_x2_y1"));
     System.out.println("passed map eat cookie");
