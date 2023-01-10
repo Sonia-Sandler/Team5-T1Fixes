@@ -39,7 +39,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -58,37 +59,70 @@ public class Map {
   }
 
   public HashSet<Type> getLoc(Location loc) {
-       
+
     // wallSet and emptySet will help you write this method
-  
+
     int x = loc.x;
     int y = loc.y;
 
-    //first check if location is out of bounds.
-    if(x >=24 || x < 0 || y >= 25 || y < 0){
+    // first check if location is out of bounds.
+    if (x >= 24 || x < 0 || y >= 25 || y < 0) {
       return null;
     }
 
     HashSet<Type> set = this.field.get(loc);
 
-    //checks if set is empty (no walls, pacman, cookie, ghost)
-    if(set == null) {
+    // checks if set is empty (no walls, pacman, cookie, ghost)
+    if (set == null) {
       return this.emptySet;
     }
 
-    //checks if location is wall.
-    for (Map.Type curr : set ) {
+    // checks if location is wall.
+    for (Map.Type curr : set) {
       if (curr == Type.WALL) {
         return this.wallSet;
       }
     }
-    
+
     return set;
   }
 
   public boolean attack(String Name) {
     // update gameOver
     return false;
+  }
+
+  /**
+   * Returns true if the given location is a valid location, that is, not out of
+   * bounds and not a wall.
+   * 
+   * @param loc The location to check.
+   * @return True if the location is valid, false otherwise.
+   */
+  public boolean isValidLoc(Location loc) {
+    int x = loc.x;
+    int y = loc.y;
+
+    // first check if location is out of bounds.
+    if (x >= 24 || x < 0 || y >= 25 || y < 0) {
+      return false;
+    }
+
+    HashSet<Type> set = this.field.get(loc);
+
+    // checks if set is empty (no walls, pacman, cookie, ghost)
+    if (set == null) {
+      return true;
+    }
+
+    // checks if location is wall.
+    for (Map.Type curr : set) {
+      if (curr == Type.WALL) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   public JComponent eatCookie(String name) {
