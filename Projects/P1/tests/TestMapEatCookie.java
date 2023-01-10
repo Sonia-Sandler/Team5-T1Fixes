@@ -9,7 +9,7 @@ public class TestMapEatCookie extends TestCase {
     Ghost ghost = frame.addGhost(new Location(3, 2), "casper", Color.red);
     PacMan pacman = frame.addPacMan(new Location(2, 2));
 
-    assertNotNull(frame.getMap().eatCookie("tok_x2_y1"));
+    assertNotNull(frame.getMap().eatCookie("pacman"));
     System.out.println("passed map eat cookie");
   }
 }
