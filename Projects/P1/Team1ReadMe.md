@@ -1,14 +1,13 @@
-#Project 1: PacMan Team1
-##Group: William He, Justin Pratama, Aman Thanvi, Anirudha Uppugunduri
+# Project 1: PacMan Team1
+## Group: William He, Justin Pratama, Aman Thanvi, Anirudha Uppugunduri
 
 -------------------------------
 Running Code from the Command Line
 -------------------------------
-
-'''
+```
 javac -cp "src/" src/*.java
 javac -cp "src/" StartMenu
-'''
+```
 
 -------------------------------
 Display of Pacman Game
