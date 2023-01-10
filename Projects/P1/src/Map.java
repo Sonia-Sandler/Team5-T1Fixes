@@ -90,6 +90,13 @@ public class Map {
     // update gameOver
     return false;
   }
+  /*Code used to test attack for attack method in Ghost.java - Justin Pratama
+   *  public boolean attack(String Name) {
+    gameOver = true;
+
+    return true;
+  }
+   */
 
   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
