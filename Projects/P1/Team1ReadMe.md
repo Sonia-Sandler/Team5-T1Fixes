@@ -6,7 +6,7 @@ Running Code from the Command Line
 -------------------------------
 ```
 javac -cp "src/" src/*.java
-javac -cp "src/" StartMenu
+java -cp "src/" StartMenu
 ```
 
 -------------------------------
