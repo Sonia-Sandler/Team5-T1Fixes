@@ -12,7 +12,9 @@ java -cp "src/" StartMenu
 -------------------------------
 Display of Pacman Game
 -------------------------------
-(To be added)
+![image](https://user-images.githubusercontent.com/121910361/211635265-32ed6821-6182-4828-8650-dcbd48ab7165.png)
+![image](https://user-images.githubusercontent.com/121910361/211635379-9774b4e2-4085-436e-8013-3fe7d0f0e57f.png)
+
 
 -------------------------------
 Team members and functions
