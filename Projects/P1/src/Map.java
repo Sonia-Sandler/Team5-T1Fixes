@@ -136,6 +136,39 @@ public class Map {
   }
    */
 
+  /**
+   * Returns true if the given location is a valid location, that is, not out of
+   * bounds and not a wall.
+   * 
+   * @param loc The location to check.
+   * @return True if the location is valid, false otherwise.
+   */
+  public boolean isValidLoc(Location loc) {
+    int x = loc.x;
+    int y = loc.y;
+
+    // first check if location is out of bounds.
+    if (x >= 24 || x < 0 || y >= 25 || y < 0) {
+      return false;
+    }
+
+    HashSet<Type> set = this.field.get(loc);
+
+    // checks if set is empty (no walls, pacman, cookie, ghost)
+    if (set == null) {
+      return true;
+    }
+
+    // checks if location is wall.
+    for (Map.Type curr : set) {
+      if (curr == Type.WALL) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
