@@ -48,6 +48,7 @@ public class PacMan {
   public boolean move() {
     ArrayList<Location> possibleMoves = get_valid_moves();
     if (possibleMoves.size() > 0) {
+    	// Using random object to get index within ArrayList
     	Random rand = new Random();
     	this.myLoc = possibleMoves.get(rand.nextInt(possibleMoves.size()));
     	return true;
