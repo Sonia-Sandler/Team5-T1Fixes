@@ -27,21 +27,20 @@ public class PacMan {
     newLocations.add(new Location(x, y - 1));
     newLocations.add(new Location(x, y + 1));
 
-    for (Location i : newLocations){
+    for (Location i : newLocations) {
 
       HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-      if(curr != null && !curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) && 
-      !curr.contains(Map.Type.PACMAN)) {
+      if (curr != null && !curr.contains(Map.Type.GHOST) && !curr.contains(Map.Type.WALL) &&
+          !curr.contains(Map.Type.PACMAN)) {
 
         result.add(i);
 
       }
-  
-    } 
-    
-    return result;
 
+    }
+
+    return result;
 
   }
 
@@ -56,12 +55,50 @@ public class PacMan {
     return false;
   }
 
+  /*
+   * This method returns all the valid moves that PacMan can make given his
+   * current position.
+   */
   public boolean is_ghost_in_range() {
+
+    // get current location
+    int x = this.myLoc.x;
+    int y = this.myLoc.y;
+
+    // create a list of 4 locations
+    ArrayList<Location> newLocations = new ArrayList<Location>();
+    newLocations.add(new Location(x - 1, y));
+    newLocations.add(new Location(x + 1, y));
+    newLocations.add(new Location(x, y - 1));
+    newLocations.add(new Location(x, y + 1));
+
+    // for each location in the list
+    for (Location i : newLocations) {
+
+      // if the location is valid
+      if (this.myMap.isValidLoc(i)) {
+
+        // get the contents of the map at this location
+        HashSet<Map.Type> curr = this.myMap.getLoc(i);
+
+        // if the contents is not null and contains a ghost
+        if (curr != null && curr.contains(Map.Type.GHOST)) {
+
+          // return true
+          return true;
+
+        }
+
+      }
+
+    }
+
+    // if no ghosts are found, return false
     return false;
   }
 
   public JComponent consume() {
-    if(myMap.getLoc(myLoc).contains(Map.Type.COOKIE)){
+    if (myMap.getLoc(myLoc).contains(Map.Type.COOKIE)) {
       String cookieName = "tok_x" + myLoc.x + "_y" + myLoc.y;
       return myMap.eatCookie(cookieName);
     }
