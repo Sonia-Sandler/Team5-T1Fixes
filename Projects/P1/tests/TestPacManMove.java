@@ -28,9 +28,7 @@ public class TestPacManMove extends TestCase {
     pacman2.move();
 
     // Making sure that the location is not the same
-    assertFalse(pacman2.myLoc.x == loc.x);
-    assertFalse(pacman2.myLoc.y == loc.y);
-    
+    assertFalse(pacman2.myLoc.x == loc.x && pacman2.myLoc.y == loc.y);
     System.out.println("Expected Result: Pacman moved.");
   }
 }
