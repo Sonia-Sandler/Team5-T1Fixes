@@ -1,6 +1,7 @@
 import java.awt.Color;
-
 import junit.framework.*;
+import org.junit.Assert;
+import java.io.FileNotFoundException;
 
 public class TestMapAttack extends TestCase {
 

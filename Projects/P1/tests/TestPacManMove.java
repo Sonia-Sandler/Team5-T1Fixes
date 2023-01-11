@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertNotEquals;
+import org.junit.Assert;
 
 import java.awt.Color;
 import java.io.*;
