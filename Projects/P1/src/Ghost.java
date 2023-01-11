@@ -65,10 +65,6 @@ public class Ghost {
 
     // create a list of 4 locations
     ArrayList<Location> newLocations = new ArrayList<Location>();
-    newLocations.add(new Location(x - 1, y));
-    newLocations.add(new Location(x + 1, y));
-    newLocations.add(new Location(x, y - 1));
-    newLocations.add(new Location(x, y + 1));
 
     newLocations = get_valid_moves();
     
