@@ -59,81 +59,44 @@ public class Ghost {
   public boolean is_pacman_in_range() {
     // If the Ghost's location is on one of the corners, only check valid directions
     // Top left
-    if (myLoc.x == 0 && myLoc.y == 0) {
-      if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
-    // Top right
-    else if (myLoc.x == 24 && myLoc.y == 0) {
-      if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
+    // get current location
+    int x = this.myLoc.x;
+    int y = this.myLoc.y;
+
+    // create a list of 4 locations
+    ArrayList<Location> newLocations = new ArrayList<Location>();
+    newLocations.add(new Location(x - 1, y));
+    newLocations.add(new Location(x + 1, y));
+    newLocations.add(new Location(x, y - 1));
+    newLocations.add(new Location(x, y + 1));
+
+    newLocations = get_valid_moves();
+    
+    for( Location current : newLocations){
+      System.out.println(current.x + "," + current.y);
     }
 
-    // Bottom left
-    else if (myLoc.x == 0 && myLoc.y == 23) {
-      if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
+    // for each location in the list
+    for (Location i : newLocations) {
 
-    // Bottom right
-    else if (myLoc.x == 24 && myLoc.y == 24) {
-      if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
+      // if the location is valid
+     
 
-    // If the Ghost's location is on one of the edges, only check valid directions
-    // Top
-    else if (myLoc.y == 0) {
-      if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
+        // get the contents of the map at this location
+        HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-    // Bottom
-    else if (myLoc.y == 23) {
-      if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
+        // if the contents is not null and contains a ghost
+        if (curr != null && curr.contains(Map.Type.PACMAN)) {
 
-    // Left
-    else if (myLoc.x == 0) {
-      if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
-    // Right
-    else if (myLoc.x == 24) {
-      if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
-          myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-        return true;
-      }
-    }
+          // return true
+          return true;
 
-    // For all other cases, check all directions
-    else if (myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-        myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
-        myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
-        myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PACMAN)) {
-      return true;
-    }
+        }
+      }
 
-    return false;
+      return false;
+
+      
   }
 
   public boolean attack() {
@@ -141,53 +104,11 @@ public class Ghost {
     int x_val = myLoc.x;
     int y_val = myLoc.y;
     // Copndition that checks right
-    if (myMap.getLoc(new Location(x_val + 1, y_val))
-        .contains(Map.Type.PACMAN)) {
+    if (is_pacman_in_range()) {
       myMap.attack(myName);
       return true;
     }
-    // Copndition that checks left
-    if (myMap.getLoc(new Location(x_val - 1, y_val))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that checks down
-    if (myMap.getLoc(new Location(x_val, y_val + 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that checks up
-    if (myMap.getLoc(new Location(x_val, y_val - 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that checks down-right
-    if (myMap.getLoc(new Location(x_val + 1, y_val + 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that checks down-left
-    if (myMap.getLoc(new Location(x_val - 1, y_val + 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that checks up-left
-    if (myMap.getLoc(new Location(x_val - 1, y_val - 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
-    // Condition that chekcs up-right
-    if (myMap.getLoc(new Location(x_val + 1, y_val - 1))
-        .contains(Map.Type.PACMAN)) {
-      myMap.attack(myName);
-      return true;
-    }
+   
     return false;
   }
 }

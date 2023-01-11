@@ -11,10 +11,10 @@ public class TestPacManInRange extends TestCase {
     Map map = frame.getMap(); // Gets the Map
 
     // Create a new ghost
-    Ghost ghost = new Ghost("inky", new Location(0, 0), map);
+    Ghost ghost = new Ghost("inky", new Location(5, 5), map);
 
     // Create a new PacMan
-    PacMan pacman = new PacMan("pacman1", new Location(1, 1), map);
+    PacMan pacman = frame.addPacMan(new Location(6, 5));
 
     // Check if PacMan is in range
     assertTrue(ghost.is_pacman_in_range());
