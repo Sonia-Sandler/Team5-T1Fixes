@@ -208,4 +208,89 @@ getLoc(Location loc)
   will also check when there are more than one object
   at a spot. (If location has a wall it will always just return
   Map.Type.WALL). Tests also check for invalid/out of bounds locations.
+  
+-------------------------------
+emeraldswag312 (Anirudha Uppugunduri)
+-------------------------------
+  Worked on:
+
+  -PacMan Class: move()
+
+  -Ghost Class: move()
+
+  -Map Class: move()
+  
+PacMan Class
+-------------------------------
+move()
+-------------------------------
+  -Type: () -> boolean
+  
+  -Description: 
+  
+  This method randomly chooses one move out of all possible
+  moves that it can take. It will not move if there are no
+  possible moves.
+
+  -Example: 
+  
+  //pacman at location (1,1) can move to (1,2),(2,1). It randomly chooses (1,2)
+  
+  pacman.move() -> true
+  
+  -Tests:
+  
+  JUnit tests will check for when pacman is trapped and cannot move and will check
+  for when pacman can move.
+
+Ghost Class
+-------------------------------
+move()
+-------------------------------
+  -Type () -> boolean
+
+  -Description:
+
+  This method randomly chooses one move out of all possible
+  moves that it can take. It will not move if there are no 
+  possible moves.
+
+  -Example: 
+
+  //Ghost at location (1,1) can move to (1,2),(2,1). It randomly chooses (1,2).
+  
+  ghost.move() -> true
+  
+  -Tests:
+  
+  Junit tests will check for when ghost is surrounded by pacmans and can move onto pacmans
+  as well as onto spaces without pacmans.
+  
+Map Class
+-------------------------------
+move()
+-------------------------------
+  -Type () -> boolean
+  
+  -Description:
+  
+  This method takes the parameters and checks if they are within the map such as
+  moving a name to a location that is within the map and legal while also checking
+  if a component is on the field with the given name. This method fails if any 
+  parameter check fails.
+  
+  -Example:
+  
+  //Pacman at location (1,1) wants to be moved to (1,2). (1,2) is a legal move, so 
+  //the necessary instance variables are modified while changing the location of
+  //the component.
+  
+  map.move("pacman", new Location(0,0), Map.Type.PACMAN)) -> false
+  
+  -Tests:
+  
+  Junit tests will check for when the component can and cannot be moved to a location.
+  For example, it cannot move into a wall. It also tests valid locations that components
+  can move to.
+
 
