@@ -29,6 +29,17 @@ umdjpratama (Justin Pratama)
   -Ghost Class: attack()
   
   -Map Class: eatCookie(String Name)
+
+-------------------------------
+amanthanvi (Aman Thanvi)
+-------------------------------
+  Worked on:
+  
+  - PacMan Class: `is_ghost_in_range()`
+  
+  - Ghost Class: `is_pacman_in_range()`
+  
+  - Map Class: `attack(String name)`
   
  PacMan Class
 -------------------------------
