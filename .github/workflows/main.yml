@@ -29,3 +29,6 @@ jobs:
       # This command compiles the source code to check if everything compiles correctly.
       - name: Compile Java Code
         run: javac -cp "src/" src/*.java
+        
+      - name: Compile Java Tests
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
