@@ -32,3 +32,12 @@ jobs:
       
       - name: Compile Java Tests
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+      - name: TestMapGetLoc
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
+      
+      - name: TestPacmanValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+     
+      - name: TestGhostValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
