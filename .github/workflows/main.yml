@@ -29,6 +29,7 @@ jobs:
       # This command compiles the source code to check if everything compiles correctly.
       - name: Compile Java Code
         run: javac -cp "src/" src/*.java
+        
       #umdjpratama tests
       - name: Compile Java Tests
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
@@ -41,3 +42,14 @@ jobs:
      
       - name: TestMapEatCookie
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
+
+
+      - name: TestMapGetLoc
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
+      
+      - name: TestPacmanValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+     
+      - name: TestGhostValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+
