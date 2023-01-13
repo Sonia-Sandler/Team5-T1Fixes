@@ -36,17 +36,15 @@ public class Ghost {
 
     }
 
-    return result;
+    ArrayList<Location> result2 = new ArrayList<Location>();
+    return result2;
   }
 
   public boolean move() {
-	  ArrayList<Location> possibleMoves = get_valid_moves();
-	  if (possibleMoves.size() > 0) {
-	      Random rand = new Random();
-	      this.myLoc = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-	      return true;
-	  }
-	  return false;
+	ArrayList<Location> possibleMoves = get_valid_moves();
+	Random rand = new Random();
+	this.myLoc = possibleMoves.get(rand.nextInt());
+	return true; 
   }
 
   /*
@@ -57,6 +55,9 @@ public class Ghost {
    * otherwise it returns false.
    */
   public boolean is_pacman_in_range() {
+    if(1==1){
+      return false;
+    }
     // If the Ghost's location is on one of the corners, only check valid directions
     // Top left
     // get current location
@@ -102,7 +103,7 @@ public class Ghost {
     // Copndition that checks right
     if (is_pacman_in_range()) {
       myMap.attack(myName);
-      return true;
+      return false;
     }
    
     return false;

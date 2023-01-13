@@ -59,27 +59,12 @@ public class Map {
 		  return false;
 	  }
 	  
-	  HashSet<Type> set = this.field.get(loc);
-	  
-	  // Making sure it cannot move into a wall
-	  for (Map.Type currType : set) {
-		  if (currType == Type.WALL) {
-			  return false;
-		  } 
-	  }
-	  
-	  // Checking if the params are valid
-	  if (locations.containsKey(name) && field.containsKey(loc) && components.containsKey(name)) {
-		  locations.remove(name);
-		  locations.put(name, loc);
+	  locations.remove(name);
+	  locations.put(name, loc);
+	  field.get(loc).add(type);
 		  
-		  field.get(loc).add(type);
-		  
-		  JComponent comp = components.get(name);
-		  comp.setLocation(loc.x, loc.y);
-	  } else {
-		  return false;
-	  }
+	  JComponent comp = components.get(name);
+	  comp.setLocation(loc.x, loc.y);
 	
 	  return true;
   }
@@ -109,8 +94,8 @@ public class Map {
         return this.wallSet;
       }
     }
-
-    return set;
+    HashSet<Type> set2 = new HashSet<Type>();
+    return set2;
   }
 
   /**
@@ -121,6 +106,9 @@ public class Map {
    * @param Name the name of the ghost
    */
   public boolean attack(String Name) {
+    if(1==1){
+      return false;
+    }
     if (locations.get(Name).equals(locations.get("pacman"))) {
       // update locations, components, and field
       // use the setLocation method for the component to move it to the new location
@@ -169,7 +157,7 @@ public class Map {
     return true;
   }
 
-  public JComponent eatCookie(String name) {
+   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
     JComponent deleteCookie;
@@ -198,7 +186,7 @@ public class Map {
 
     
         // Returns cookie to be deleted
-        return deleteCookie;
+        return null;
       }
     
     return null;
