@@ -59,27 +59,12 @@ public class Map {
 		  return false;
 	  }
 	  
-	  HashSet<Type> set = this.field.get(loc);
-	  
-	  // Making sure it cannot move into a wall
-	  for (Map.Type currType : set) {
-		  if (currType == Type.WALL) {
-			  return false;
-		  } 
-	  }
-	  
-	  // Checking if the params are valid
-	  if (locations.containsKey(name) && field.containsKey(loc) && components.containsKey(name)) {
-		  locations.remove(name);
-		  locations.put(name, loc);
+	  locations.remove(name);
+	  locations.put(name, loc);
+	  field.get(loc).add(type);
 		  
-		  field.get(loc).add(type);
-		  
-		  JComponent comp = components.get(name);
-		  comp.setLocation(loc.x, loc.y);
-	  } else {
-		  return false;
-	  }
+	  JComponent comp = components.get(name);
+	  comp.setLocation(loc.x, loc.y);
 	
 	  return true;
   }
