@@ -198,9 +198,9 @@ public class Map {
 
     
         // Returns cookie to be deleted
-        return deleteCookie;
+        return null;
       }
     
-    return null;
+    return deleteCookie;
   }
 }
