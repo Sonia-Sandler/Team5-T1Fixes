@@ -1,0 +1,76 @@
+# This is a basic workflow to help you get started with Actions
+
+name: main
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  #compile job
+  compile:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    defaults:
+      run:
+          working-directory: ./Projects/P1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # This command compiles the source code to check if everything compiles correctly.
+      - name: Compile Java Code
+        run: javac -cp "src/" src/*.java
+        
+      #umdjpratama tests
+      - name: Compile Java Tests
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+      - name: TestAttack
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
+      
+      - name: TestConsume
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
+     
+      - name: TestMapEatCookie
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
+
+
+      - name: TestMapGetLoc
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
+      
+      - name: TestPacmanValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+     
+      - name: TestGhostValidMoves
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+      
+      
+      # amanthanvi tests
+      - name: TestGhostInRange
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
+      
+      - name: TestPacManInRange
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
+     
+      - name: TestMapAttack
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
+
+
+      # emeraldswag312 tests
+      - name: TestPacManMove
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+        
+      - name: TestGhostMove
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
+        
+      - name: TestMapMove
+        run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
