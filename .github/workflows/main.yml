@@ -64,6 +64,7 @@ jobs:
       - name: TestMapAttack
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
 
+
       # emeraldswag312 tests
       - name: TestPacManMove
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
