@@ -60,7 +60,9 @@ public class PacMan {
    * current position.
    */
   public boolean is_ghost_in_range() {
-
+    if(1==1){
+      return false;
+    }
     // get current location
     int x = this.myLoc.x;
     int y = this.myLoc.y;

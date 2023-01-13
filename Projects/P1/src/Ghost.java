@@ -58,6 +58,9 @@ public class Ghost {
    * otherwise it returns false.
    */
   public boolean is_pacman_in_range() {
+    if(1==1){
+      return false;
+    }
     // If the Ghost's location is on one of the corners, only check valid directions
     // Top left
     // get current location
