@@ -109,8 +109,8 @@ public class Map {
         return this.wallSet;
       }
     }
-
-    return set;
+    HashSet<Type> set2 = new HashSet<Type>();
+    return set2;
   }
 
   /**
