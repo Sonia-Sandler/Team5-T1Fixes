@@ -29,7 +29,7 @@ jobs:
       # This command compiles the source code to check if everything compiles correctly.
       - name: Compile Java Code
         run: javac -cp "src/" src/*.java
-        
+  
   compiletests:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -59,7 +59,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      
+      - name: Compile Java Code
+        run: javac -cp "src/" src/*.java
+        
+      - name: Compile Java Tests
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+        
       - name: TestAttack
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestAttack
   
@@ -75,6 +81,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
+      - name: Compile Java Code
+        run: javac -cp "src/" src/*.java
+        
+      - name: Compile Java Tests
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
       
       - name: TestConsume
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestConsume
