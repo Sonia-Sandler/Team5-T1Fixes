@@ -43,7 +43,7 @@ public class Ghost {
   public boolean move() {
 	ArrayList<Location> possibleMoves = get_valid_moves();
 	Random rand = new Random();
-	this.myLoc = possibleMoves.get(rand.nextInt()));
+	this.myLoc = possibleMoves.get(rand.nextInt());
 	return true; 
   }
 
