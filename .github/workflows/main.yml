@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: main
 
 # Controls when the workflow will run
@@ -46,7 +44,7 @@ jobs:
       - name: Compile Java Tests
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
         
-      #umdjpratama tests
+  #umdjpratama tests
   TestAttack:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -113,7 +111,7 @@ jobs:
       - name: TestMapEatCookie
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
 
-
+  #whe1123 tests
   TestMapGetLoc:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -179,6 +177,8 @@ jobs:
       
       - name: TestGhostValidMoves
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+  
+  # amanthanvi tests
   TestGhostInRange:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -198,7 +198,6 @@ jobs:
       - name: Compile Java Tests
         run: javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
       
-      # amanthanvi tests
       - name: TestGhostInRange
         run: java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
         
