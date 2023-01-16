@@ -66,24 +66,18 @@ public class Ghost {
 
     for (Location i : newLocations) {
 
-      // if the location is valid
-      if (this.myMap.isValidLoc(i)) {
+      // get the contents of the map at this location
+      HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-        // get the contents of the map at this location
-        HashSet<Map.Type> curr = this.myMap.getLoc(i);
+      // if the contents is not null and contains a ghost
+      if (curr != null && curr.contains(Map.Type.PACMAN)) {
 
-        // if the contents is not null and contains a ghost
-        if (curr != null && curr.contains(Map.Type.PACMAN)) {
-
-          // return true
-          return true;
-
-        }
-
+        // return true
+        return true;
       }
 
     }
-    // if no ghosts are found, return false
+    // if no pacman is found, return false
     return false;
   }
 
