@@ -55,29 +55,19 @@ public class Ghost {
    * otherwise it returns false.
    */
   public boolean is_pacman_in_range() {
-    if(1==1){
-      return false;
-    }
-    // If the Ghost's location is on one of the corners, only check valid directions
-    // Top left
-    // get current location
     int x = this.myLoc.x;
     int y = this.myLoc.y;
 
-    // create a list of 4 locations
     ArrayList<Location> newLocations = new ArrayList<Location>();
+    newLocations.add(new Location(x - 1, y));
+    newLocations.add(new Location(x + 1, y));
+    newLocations.add(new Location(x, y - 1));
+    newLocations.add(new Location(x, y + 1));
 
-    newLocations = get_valid_moves();
-    
-    for( Location current : newLocations){
-      System.out.println(current.x + "," + current.y);
-    }
-
-    // for each location in the list
     for (Location i : newLocations) {
 
       // if the location is valid
-     
+      if (this.myMap.isValidLoc(i)) {
 
         // get the contents of the map at this location
         HashSet<Map.Type> curr = this.myMap.getLoc(i);
@@ -89,11 +79,12 @@ public class Ghost {
           return true;
 
         }
+
       }
 
-      return false;
-
-      
+    }
+    // if no ghosts are found, return false
+    return false;
   }
 
   public boolean attack() {
