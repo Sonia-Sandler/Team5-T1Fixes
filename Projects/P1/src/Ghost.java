@@ -107,7 +107,7 @@ public class Ghost {
     // Copndition that checks right
     if (is_pacman_in_range()) {
       myMap.attack(myName);
-      return false;
+      return true;
     }
    
     return false;
