@@ -60,9 +60,6 @@ public class PacMan {
    * current position.
    */
   public boolean is_ghost_in_range() {
-    if(1==1){
-      return false;
-    }
     // get current location
     int x = this.myLoc.x;
     int y = this.myLoc.y;
@@ -77,20 +74,14 @@ public class PacMan {
     // for each location in the list
     for (Location i : newLocations) {
 
-      // if the location is valid
-      if (this.myMap.isValidLoc(i)) {
+      // get the contents of the map at this location
+      HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-        // get the contents of the map at this location
-        HashSet<Map.Type> curr = this.myMap.getLoc(i);
+      // if the contents is not null and contains a ghost
+      if (curr != null && curr.contains(Map.Type.GHOST)) {
 
-        // if the contents is not null and contains a ghost
-        if (curr != null && curr.contains(Map.Type.GHOST)) {
-
-          // return true
-          return true;
-
-        }
-
+        // return true
+        return true;
       }
 
     }
