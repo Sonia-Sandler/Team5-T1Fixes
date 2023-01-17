@@ -59,12 +59,16 @@ public class Map {
 		  return false;
 	  }
 	  
-	  locations.remove(name);
-	  locations.put(name, loc);
-	  field.get(loc).add(type);
+	  if (locations.containsKey(name) && field.containsKey(loc) && components.containsKey(name)) {
+		locations.remove(name);
+	  	locations.put(name, loc);
+	  	field.get(loc).add(type);
 		  
-	  JComponent comp = components.get(name);
-	  comp.setLocation(loc.x, loc.y);
+	  	JComponent comp = components.get(name);
+	  	comp.setLocation(loc.x, loc.y);
+	  } else {
+		  return false;
+	  }
 	
 	  return true;
   }
