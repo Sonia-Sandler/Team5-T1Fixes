@@ -110,6 +110,6 @@ public class Ghost {
       return true;
     }
    
-    return false;
+    return true;
   }
 }
