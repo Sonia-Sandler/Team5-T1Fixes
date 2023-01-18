@@ -36,8 +36,7 @@ public class Ghost {
 
     }
 
-    ArrayList<Location> result2 = new ArrayList<Location>();
-    return result2;
+    return result;
   }
 
   public boolean move() {

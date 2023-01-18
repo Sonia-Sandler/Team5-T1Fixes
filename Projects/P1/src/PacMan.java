@@ -18,7 +18,7 @@ public class PacMan {
 
   public ArrayList<Location> get_valid_moves() {
     int x = this.myLoc.x;
-    int y = x;
+    int y = this.myLoc.y;     // Changed this from x
 
     ArrayList<Location> newLocations = new ArrayList<Location>();
     ArrayList<Location> result = new ArrayList<Location>();
