@@ -88,7 +88,7 @@ public class Ghost {
     // Variables that store location values
     int x_val = myLoc.x;
     int y_val = myLoc.y;
-    // Copndition that checks right
+    // Condition that checks right
     if (is_pacman_in_range()) {
       myMap.attack(myName);
       return false;
