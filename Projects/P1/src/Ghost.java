@@ -109,6 +109,8 @@ public class Ghost {
       myMap.attack(myName);
       return true;
     }
+
+    
     return true;
   }
 }
