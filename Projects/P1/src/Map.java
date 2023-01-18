@@ -59,12 +59,24 @@ public class Map {
 		  return false;
 	  }
 	  
-	  locations.remove(name);
-	  locations.put(name, loc);
-	  field.get(loc).add(type);
+	  HashSet<Type> set = this.field.get(loc);
+
+	  for (Map.Type currType : set) {
+		  if (currType == Type.WALL) {
+			  return false;
+		  } 
+	  }
+	  
+	  if (locations.containsKey(name) && field.containsKey(loc) && components.containsKey(name)) {
+		locations.remove(name);
+	  	locations.put(name, loc);
+	  	field.get(loc).add(type);
 		  
-	  JComponent comp = components.get(name);
-	  comp.setLocation(loc.x, loc.y);
+	  	JComponent comp = components.get(name);
+	  	comp.setLocation(loc.x, loc.y);
+	  } else {
+		  return false;
+	  }
 	
 	  return true;
   }
@@ -107,12 +119,9 @@ public class Map {
    * @param Name the name of the ghost
    */
   public boolean attack(String Name) {
-    if(1==1){
-      return false;
-    }
+
     if (locations.get(Name).equals(locations.get("pacman"))) {
-      // update locations, components, and field
-      // use the setLocation method for the component to move it to the new location
+      gameOver = true;
       return true;
     }
     return false;
@@ -187,7 +196,7 @@ public class Map {
 
     
         // Returns cookie to be deleted
-        return deleteCookie;
+        return null;
       }
     return null;
   }
