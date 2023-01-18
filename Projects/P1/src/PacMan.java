@@ -104,6 +104,6 @@ public class PacMan {
       String cookieName = "tok_x" + myLoc.x + "_y" + myLoc.y;
       return myMap.eatCookie(cookieName);
     }
-    return null;
+    return null; 
   }
 }
