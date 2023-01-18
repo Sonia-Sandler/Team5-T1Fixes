@@ -36,8 +36,7 @@ public class Ghost {
 
     }
 
-    ArrayList<Location> result2 = new ArrayList<Location>();
-    return result2;
+    return result;
   }
 
   public boolean move() {
@@ -59,45 +58,30 @@ public class Ghost {
    * otherwise it returns false.
    */
   public boolean is_pacman_in_range() {
-    if(1==1){
-      return false;
-    }
-    // If the Ghost's location is on one of the corners, only check valid directions
-    // Top left
-    // get current location
     int x = this.myLoc.x;
     int y = this.myLoc.y;
 
-    // create a list of 4 locations
     ArrayList<Location> newLocations = new ArrayList<Location>();
+    newLocations.add(new Location(x - 1, y));
+    newLocations.add(new Location(x + 1, y));
+    newLocations.add(new Location(x, y - 1));
+    newLocations.add(new Location(x, y + 1));
 
-    newLocations = get_valid_moves();
-    
-    for( Location current : newLocations){
-      System.out.println(current.x + "," + current.y);
-    }
-
-    // for each location in the list
     for (Location i : newLocations) {
 
-      // if the location is valid
-     
+      // get the contents of the map at this location
+      HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-        // get the contents of the map at this location
-        HashSet<Map.Type> curr = this.myMap.getLoc(i);
+      // if the contents is not null and contains a ghost
+      if (curr != null && curr.contains(Map.Type.PACMAN)) {
 
-        // if the contents is not null and contains a ghost
-        if (curr != null && curr.contains(Map.Type.PACMAN)) {
-
-          // return true
-          return true;
-
-        }
+        // return true
+        return true;
       }
 
-      return false;
-
-      
+    }
+    // if no pacman is found, return false
+    return false;
   }
 
   public boolean attack() {
@@ -109,8 +93,6 @@ public class Ghost {
       myMap.attack(myName);
       return true;
     }
-
-    
     return true;
   }
 }

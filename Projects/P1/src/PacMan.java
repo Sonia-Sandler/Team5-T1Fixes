@@ -18,7 +18,7 @@ public class PacMan {
 
   public ArrayList<Location> get_valid_moves() {
     int x = this.myLoc.x;
-    int y = x;
+    int y = this.myLoc.y;     // Changed this from x
 
     ArrayList<Location> newLocations = new ArrayList<Location>();
     ArrayList<Location> result = new ArrayList<Location>();
@@ -60,9 +60,6 @@ public class PacMan {
    * current position.
    */
   public boolean is_ghost_in_range() {
-    if(1==1){
-      return false;
-    }
     // get current location
     int x = this.myLoc.x;
     int y = this.myLoc.y;
@@ -77,20 +74,14 @@ public class PacMan {
     // for each location in the list
     for (Location i : newLocations) {
 
-      // if the location is valid
-      if (this.myMap.isValidLoc(i)) {
+      // get the contents of the map at this location
+      HashSet<Map.Type> curr = this.myMap.getLoc(i);
 
-        // get the contents of the map at this location
-        HashSet<Map.Type> curr = this.myMap.getLoc(i);
+      // if the contents is not null and contains a ghost
+      if (curr != null && curr.contains(Map.Type.GHOST)) {
 
-        // if the contents is not null and contains a ghost
-        if (curr != null && curr.contains(Map.Type.GHOST)) {
-
-          // return true
-          return true;
-
-        }
-
+        // return true
+        return true;
       }
 
     }
@@ -102,7 +93,7 @@ public class PacMan {
   public JComponent consume() {
     if (myMap.getLoc(myLoc).contains(Map.Type.COOKIE)) {
       String cookieName = "tok_x" + myLoc.x + "_y" + myLoc.y;
-      return myMap.eatCookie(cookieName);
+      return myMap.eatCookie("Brownie Name");
     }
     return null;
   }
