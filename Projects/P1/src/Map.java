@@ -59,6 +59,14 @@ public class Map {
 		  return false;
 	  }
 	  
+	  HashSet<Type> set = this.field.get(loc);
+
+	  for (Map.Type currType : set) {
+		  if (currType == Type.WALL) {
+			  return false;
+		  } 
+	  }
+	  
 	  if (locations.containsKey(name) && field.containsKey(loc) && components.containsKey(name)) {
 		locations.remove(name);
 	  	locations.put(name, loc);
